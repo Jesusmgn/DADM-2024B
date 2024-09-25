@@ -9,6 +9,7 @@
   {id:'3', label:'1 Nutella'},
   ]);
   const newItem = ref('');
+  const newItemPriority = ref('low');
 </script>
 
 <template>
@@ -16,7 +17,17 @@
     <i class="material-icons shopping-cart-icon">local_mall</i>
     {{ header }}
   </h1>
-  <input v-model="newItem" type="text" placeholder="Agregar articulo"> {{ newItem }}
+  <input v-model="newItem" type="text" placeholder="Agregar articulo"> 
+  <!-- Radio Buttos -->
+   <label> 
+    <input type="radio" value="low" v-model="newItemPriority">
+    Baja
+   </label>
+   <label> 
+    <input type="radio"  value="high" v-model="newItemPriority">
+    Alta
+   </label>
+   {{ newItemPriority == 'low' ? '🧊' : '🔥' }}
   <ul>
     <li v-for="item in items" v-bind:key="item.id"> 💹 {{ item.label }} </li>
   </ul>
