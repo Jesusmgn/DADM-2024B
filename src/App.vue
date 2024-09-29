@@ -17,17 +17,25 @@
     <i class="material-icons shopping-cart-icon">local_mall</i>
     {{ header }}
   </h1>
-  <input v-model="newItem" type="text" placeholder="Agregar articulo"> 
-  <!-- Radio Buttos -->
-   <label> 
-    <input type="radio" value="low" v-model="newItemPriority">
-    Baja
-   </label>
-   <label> 
-    <input type="radio"  value="high" v-model="newItemPriority">
-    Alta
-   </label>
-   {{ newItemPriority == 'low' ? '🧊' : '🔥' }}
+  <!-- Agrupando Entradas de usuario -->
+   <form class="add-item form" v-on:submit.prevent="items.push({id: items.length + 1, label:newItem})"> 
+    <!-- Entrada de texto--> 
+    <input 
+      v-model.trim="newItem" 
+      type="text" 
+      placeholder="Agregar articulo">
+    <!-- Radio Buttos -->
+      <label>
+        <input type="radio" value="low" v-model="newItemPriority">
+        Alta Prioridad
+      </label>
+
+    <!-- Boton -->
+    <button class="btn btn-primary">
+      Salvar Articulo
+    </button>
+   </form>
+   <!-- Lista -->
   <ul>
     <li v-for="item in items" v-bind:key="item.id"> 💹 {{ item.label }} </li>
   </ul>
