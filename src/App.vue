@@ -26,7 +26,7 @@
       placeholder="Agregar articulo">
     <!-- Radio Buttos -->
       <label>
-        <input type="radio" value="low" v-model="newItemPriority">
+        <input type="checkbox" value="low" v-model="newItemPriority">
         Alta Prioridad
       </label>
 
