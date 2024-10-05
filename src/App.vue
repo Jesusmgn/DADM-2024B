@@ -1,5 +1,5 @@
 <script setup>
-import { onActivated, ref } from 'vue'
+import { ref } from 'vue'
 // Modelo
 const header = ref('App lista de compras')
 // --- items ---
@@ -24,7 +24,11 @@ const editing = ref(false);
 const activateEdition = (activate) => {
   editing.value = activate
 }
-
+//--Colocando una hyperlink con metodo -- 
+const goGoogle = () => {
+  if (newItem.value.length) return `https://${newItem.value}`;
+  return 'https://google.com';
+}
 </script>
 
 <template>
@@ -38,7 +42,13 @@ const activateEdition = (activate) => {
     <button v-if="editing" class="btn" @click="activateEdition(false)">Cancelar</button>
     <button v-else class="btn btn-primary" @click="activateEdition(true)">Agregar Articulo</button>
   </div>
-  <!-- Agrupando Entradas de usuario -->
+  <!--Colocando una hyperlink--> 
+  <a :href=goGoogle()>{{ newItem === '' ? '🔗 LINK' : newItem}}</a>
+ <!-- <a v-bind:href= "newItem == '' ? 'https://www.google.com' : 'http://' + newItem" target="_blank">
+    {{newItem == "" ? "🔗 Link" : newItem }}
+  </a> -->
+  
+  <!-- Agrupando Entradas de usuario  -->
   <form
     class="add-item form"
     v-if="editing"
