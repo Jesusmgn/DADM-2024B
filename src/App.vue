@@ -8,8 +8,8 @@ const items = ref([
   { id: '0', label: '10 bolillos', purchased: false, priority: true },
   { id: '1', label: '1 lata frijoles', purchased: false, priority: true },
   { id: '2', label: '1 chelas', purchased: false, priority: false },
-  { id: '3', label: '1 Nutella', purchased: false, priority: true },
-]);
+  { id: '3', label: '1 Nutella', purchased: false, priority: true }
+])
 // Item-Method
 const saveItem = () => {
   // Add new item
@@ -62,10 +62,20 @@ const activateEdition = (activate) => {
   <!-- Lista -->
   <ul>
     <li
-      v-for="{ label, id, purchased } in items"
+      v-for="{ label, id, purchased, priority } in items"
       v-bind:key="id"
       class="amazing"
-      :class="{ strikeout: purchased, priority: priority}">
+      :class="{ strikeout: purchased, priority: priority }"
+    >
+      {{ priority ? '🔥' : '🛍' }} {{ label }}
+    </li>
+  </ul>
+  <!-- Lista clases como arreglos -->
+  <ul>
+    <li
+      v-for="{ label, id, purchased, priority } in items"
+      v-bind:key="id"
+      :class="[purchased ? 'strikeout' : '' , priority ? 'priority' : '']">
       {{ priority ? '🔥' : '🛍' }} {{ label }}
     </li>
   </ul>
