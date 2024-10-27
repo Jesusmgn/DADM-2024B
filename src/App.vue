@@ -32,7 +32,7 @@ const doEdit = (edit) => {
   // en caso de que se oculte o muestre
   // el formulario
   newItem.value = "";
-  newItemHighPriority.value = false;
+  newItemPriority.value = false;
 }
 // --- Formulario ---
 const newItem = ref('')
@@ -86,10 +86,10 @@ const togglePurchased = (item) => {
   <!-- Lista -->
   <ul>
     <li
-      v-for="({ id, label, purchased, highPriority }, index) in items"
+      v-for="({ id, label, purchased, Priority }, index) in items"
       @click="togglePurchased(items[index])"
       v-bind:key="id"
-      :class="{ strikeout: purchased, priority: highPriority}"
+      :class="{ strikeout: purchased, priority: Priority}"
     >
       {{ priority ? '🔥' : '🛍' }} {{ label }}
     </li>
