@@ -2,20 +2,37 @@
 import { ref } from 'vue'
 // Modelo
 const header = ref('App lista de compras')
+
 // --- items ---
 // Item-Model
 const items = ref([
-  { id: '0', label: '10 bolillos', purchased: false, priority: true },
-  { id: '1', label: '1 lata frijoles', purchased: false, priority: true },
+  { id: '0', label: '10 bolillos', purchased: true, priority: true },
+  { id: '1', label: '1 lata frijoles', purchased: true, priority: true },
   { id: '2', label: '1 chelas', purchased: false, priority: false },
   { id: '3', label: '1 Nutella', purchased: false, priority: true }
-])
+]);
+
 // Item-Method
 const saveItem = () => {
   // Add new item
-  items.value.push({ id: items.value.length + 1, label: newItem.value })
+  items.value.push({ 
+    id: items.value.length + 1, 
+    label: newItem.value ,
+    highPriority: newItemPriority.value
+  });
   //clean the input
-  newItem.value = ''
+  newItem.value = '';
+  newItemPriority.value = false;
+};
+
+// Funcion que alterna el valor de la variable editing
+const doEdit = (edit) => {
+  editing.value = edit;
+  //Limpiando la entrada de texto
+  // en caso de que se oculte o muestre
+  // el formulario
+  newItem.value = "";
+  newItemHighPriority.value = false;
 }
 // --- Formulario ---
 const newItem = ref('')
@@ -24,11 +41,18 @@ const editing = ref(false)
 const activateEdition = (activate) => {
   editing.value = activate
 }
+
 //--Colocando una hyperlink con metodo --
 /* const goGoogle = () => {
-  if (newItem.value.length) return `https://${newItem.value}`;
+  if (newItem.value.length) return https://${newItem.value};
   return 'https://google.com';
 } */
+
+// Alternando estado de compra del item
+const togglePurchased = (item) => {
+  item.purchased = !item.purchased;
+};
+
 </script>
 
 <template>
@@ -62,10 +86,10 @@ const activateEdition = (activate) => {
   <!-- Lista -->
   <ul>
     <li
-      v-for="{ label, id, purchased, priority } in items"
+      v-for="({ id, label, purchased, highPriority }, index) in items"
+      @click="togglePurchased(items[index])"
       v-bind:key="id"
-      class="amazing"
-      :class="{ strikeout: purchased, priority: priority }"
+      :class="{ strikeout: purchased, priority: highPriority}"
     >
       {{ priority ? '🔥' : '🛍' }} {{ label }}
     </li>
