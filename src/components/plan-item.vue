@@ -1,7 +1,7 @@
 <template>
     <div class="plan">
      <div class="description">
-        <span class="title"> {{ planIcon }} {{ name }} Precio ${{ price + 100 }}</span>
+        <span class="title"> {{ name }}</span>
      </div>
     </div>
 </template>
@@ -15,11 +15,7 @@ defineProps({
       tyoe: String,
       required: true
     },
-    planIcon: String,
-    price: {
-        type: Number,
-        default: 200
-    }
+
 });
 
 </script>
