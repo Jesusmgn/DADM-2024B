@@ -16,9 +16,9 @@ import planItem from './components/plan-item.vue';
       Viajamos por el mundo para encontrar el mejor café de origen único para ti
     </h2>
     <div class="plans">
-      <plan-item>El Soltero</plan-item>
-      <plan-item>El Curioso</plan-item>
-      <plan-item>El Adicto</plan-item>
+      <plan-item :price="100" plan-icon="☕" name="El cafetero"></plan-item>
+      <plan-item :price="200" planIcon="🍻"  name="El chelero"></plan-item>
+      <plan-item :price="300" planIcon="🧠"  name="El intelectual"></plan-item>
     </div>
   </div>
 </template>
