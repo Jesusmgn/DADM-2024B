@@ -443,7 +443,6 @@ span#logo {
   padding: 0 40px;
   margin-bottom: 40px;
 }
-
 .plans .plan {
   background-color: #fff;
   -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
@@ -734,4 +733,9 @@ a {
 a:not(.btn):hover {
   color: #127077;
   text-decoration: underline;
+}
+
+.plans .selected {
+  background-color: #B3CFD0;
+  color: #fff;
 }
