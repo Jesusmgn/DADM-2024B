@@ -20,8 +20,8 @@ const showPlans = ref(false);
     </h2>
 
     <label><input type="checkbox" v-model="showPlans">
-    mostrar selectos de planes
-    </label>
+    Mostrar selector de planes
+    </label>
     
     <PlanPicker v-if="showPlans" />
     
