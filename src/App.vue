@@ -4,7 +4,12 @@ import fancyButton from './components/FancyButton.vue'
 
 <template>
   <div class="content">
-    <fancy-button />
+    <fancy-button>
+      <template #icon="slotProps">
+        ⭐ {{ slotProps }}
+      </template>
+      Hazme Clic
+    </fancy-button>
   </div>
 </template>
 
